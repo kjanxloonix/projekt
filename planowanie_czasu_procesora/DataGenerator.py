@@ -2,6 +2,7 @@ import ProcessClass
 import pickle
 import random
 
+
 class Generator:
     def __init__(self, number_of_processes=10):
         self.number = number_of_processes
@@ -25,5 +26,9 @@ class Generator:
             if i == 0:
                 t1 = 0
             self.process_list.append(ProcessClass.Process(t1, t2))
+
+    def show_process_list(self):
+        index = 1
         for i in self.process_list:
-            print(i.arrive_t, i.exec_t, i.end_t)
+            print("Process " + str(index) + ":", i.arrive_t, i.exec_t, i.end_t)
+            index += 1
