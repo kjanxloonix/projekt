@@ -1,5 +1,6 @@
 class Menu:
     def __init__(self):
+        self.choice = 0
         self.list = []
         self.list.append("[1] Generuj listę procesów  ")
         self.list.append("[2] Załaduj listę procesów  ")
@@ -11,10 +12,19 @@ class Menu:
     def display(self):
         for i in range(len(self.list)):
             if i == 0:
-                print('+' + '-' * 13 + 'MENU' + '-' * 13 + '+')
+                print('\n+' + '-' * 13 + 'MENU' + '-' * 13 + '+')
             print('| ' + self.list[i] + ' |')
         else:
-            print('+' + '-' * 30 + '+')
+            print('+' + '-' * 30 + '+\n')
 
     def select(self):
-        pass
+        while True:
+            try:
+                self.choice = int(input("Wybierz >> "))
+                if 0 < self.choice < 7:
+                    return self.choice
+                else:
+                    print(" >Podaj poprawną liczbę.<")
+                    continue
+            except ValueError:
+                print(" >Błędna wartość, podaj liczbę.<")

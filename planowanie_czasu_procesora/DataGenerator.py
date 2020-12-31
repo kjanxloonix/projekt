@@ -12,14 +12,15 @@ class Generator:
         file = open('samples', 'wb')
         pickle.dump(self.process_list, file)
         file.close()
-        print("Zapisano dane do pliku.")
+        print(" >Zapisano dane do pliku.<")
 
     def load_all(self):
         file = open('samples', 'rb')
         self.process_list = pickle.load(file)
-        print("Załadowano dane z pliku.")
+        print(" >Załadowano dane z pliku.<")
 
     def generate_processes(self):
+        print(" >Generuje nową listę procesów...<")
         for i in range(self.number):
             t1 = random.randrange(1, 10)
             t2 = random.randrange(1, 10)
