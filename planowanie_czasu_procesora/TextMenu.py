@@ -7,7 +7,8 @@ class Menu:
         self.list.append("[3] Zapisz listę procesów   ")
         self.list.append("[4] Symuluj algorytmem FCFS ")
         self.list.append("[5] Symuluj algorytmem SJF  ")
-        self.list.append("[6] Wyjdź z programu        ")
+        self.list.append("[6] Wyświetl listę procesów ")
+        self.list.append("[7] Wyjdź z programu        ")
         self.strings = []
         self.strings.append(" >Podaj poprawną liczbę.<")
         self.strings.append(" >Błędna wartość, podaj liczbę.<")
@@ -29,7 +30,7 @@ class Menu:
         while True:
             try:
                 self.choice = int(input("Wybierz >> "))
-                if 0 < self.choice < 7:
+                if 0 < self.choice < 8:
                     return self.choice
                 else:
                     print(self.strings[0])
@@ -48,7 +49,6 @@ class Menu:
 
     def genetatorclass_submenu_handler(self):
         while True:
-            processes, begin, end = 0, 0, 0
             try:
                 processes = int(input(self.strings[4]))
                 if processes < 3:
