@@ -28,3 +28,13 @@ class Menu:
                     continue
             except ValueError:
                 print(" >Błędna wartość, podaj liczbę.<")
+
+    def generatorclass_submenu(self):
+        while True:
+            self.choice = str(input("Czy chcesz edytować domyślne wartości generatora? [y/n] >> "))
+            if self.choice == 'y' or self.choice == 'n':
+                return self.choice
+            else:
+                print("Błąd. ", end='')
+                continue
+

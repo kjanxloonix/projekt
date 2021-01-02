@@ -4,8 +4,7 @@ import random
 
 
 class Generator:
-    def __init__(self, number_of_processes=10):
-        self.number = number_of_processes
+    def __init__(self):
         self.process_list = []
 
     def save_all(self):
@@ -19,17 +18,17 @@ class Generator:
         self.process_list = pickle.load(file)
         print(" >Załadowano dane z pliku.<")
 
-    def generate_processes(self):
+    def generate_processes(self, processes_number=10, begin=0, end=10):
         print(" >Generuje nową listę procesów...<")
-        for i in range(self.number):
-            t1 = random.randrange(1, 10)
-            t2 = random.randrange(1, 10)
-            if i == 0:
-                t1 = 0
-            self.process_list.append(ProcessClass.Process(t1, t2))
+        self.process_list.clear()
+        for i in range(processes_number):
+            t_arr = random.randrange(begin, end)
+            t_exec = random.randrange(1, 20)
+            self.process_list.append(ProcessClass.Process(t_arr, t_exec))
 
     def show_process_list(self):
+        print("Długość listy procesów:", len(self.process_list))
         index = 1
         for i in self.process_list:
-            print("Process " + str(index) + ":", i.arrive_t, i.exec_t, i.end_t)
+            print("Proces " + str(index) + ":", i.arrive_t, i.exec_t, i.end_t)
             index += 1
