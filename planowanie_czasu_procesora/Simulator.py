@@ -2,36 +2,39 @@ class Simulator:
     def __init__(self, generator):
         self.worklist = []
         self.calculated_processes = []
+        self.waiting_times = []
         self.executing_time = 0
         self.gen = generator
 
     def fcfs_simulation(self):
-        # TODO symulacja
+        if len(self.gen.process_list) == 0:
+            return "Błąd!"
         time = 0
         while True:
-            print("---", self.executing_time)
-
             for i in self.gen.process_list:
                 if i.arrive_t == time:
                     self.worklist.append(i)
-
-            if self.executing_time == 0:
+            if self.executing_time == 0 and len(self.worklist) != 0:
                 self.executing_time = self.worklist[0].exec_t
-
-            for i in self.worklist:
-                print(i.arrive_t, i.exec_t, i.end_t)
-
             time += 1
-            self.worklist[0].exec_t -= 1
-
-            if self.worklist[0].exec_t == 0:
-                self.worklist[0].exec_t = self.executing_time
-                self.executing_time = 0
-                self.worklist[0].end_t = time
-                self.calculated_processes.append(self.worklist[0])
-                self.worklist.pop(0)
-            for i in self.calculated_processes:
-                print("||", i.arrive_t, i.exec_t, i.end_t)
-            print(time)
+            if len(self.worklist) != 0:
+                self.worklist[0].exec_t -= 1
+                if self.worklist[0].exec_t == 0:
+                    self.worklist[0].exec_t = self.executing_time
+                    self.executing_time = 0
+                    self.worklist[0].end_t = time
+                    self.calculated_processes.append(self.worklist[0])
+                    self.worklist.pop(0)
             if len(self.gen.process_list) == len(self.calculated_processes):
-                break
+                self.gen.process_list = self.calculated_processes
+                return time
+
+    def calculate_average_time(self):
+        if len(self.gen.process_list) == 0:
+            return "Błąd!"
+        for i in range(len(self.calculated_processes)):
+            if i == 0:
+                self.waiting_times.append(0)
+                continue
+            self.waiting_times.append(self.calculated_processes[i-1].end_t-self.calculated_processes[i].arrive_t)
+        return sum(self.waiting_times) / len(self.calculated_processes)

@@ -25,7 +25,6 @@ class Generator:
             t_arr = random.randrange(begin, end)
             t_exec = random.randrange(1, 20)
             self.process_list.append(ProcessClass.Process(t_arr, t_exec))
-        self.process_list.sort(key=lambda x: x.arrive_t, reverse=False)
 
     def show_process_list(self):
         print("Długość listy procesów:", len(self.process_list))
