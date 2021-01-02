@@ -7,8 +7,9 @@ generator = DataGenerator.Generator()
 simulator = Simulator.Simulator(generator)
 
 generator.load_all()
-# generator.show_process_list()
+generator.show_process_list()
 simulator.fcfs_simulation()
+generator.show_process_list()
 
 
 # while True:
