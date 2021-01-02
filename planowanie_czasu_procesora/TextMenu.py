@@ -8,6 +8,14 @@ class Menu:
         self.list.append("[4] Symuluj algorytmem FCFS ")
         self.list.append("[5] Symuluj algorytmem SJF  ")
         self.list.append("[6] Wyjdź z programu        ")
+        self.strings = []
+        self.strings.append(" >Podaj poprawną liczbę.<")
+        self.strings.append(" >Błędna wartość, podaj liczbę.<")
+        self.strings.append(" >Błędny zakres.<")
+        self.strings.append("Czy chcesz edytować domyślne wartości generatora? [y/n] >> ")
+        self.strings.append("Ile procesów chcesz wygenerować? >> ")
+        self.strings.append("Podaj początek zakresu dla czasów nadejścia. >> ")
+        self.strings.append("Podaj koniec zakresu dla czasów nadejścia. >> ")
 
     def display(self):
         for i in range(len(self.list)):
@@ -24,17 +32,52 @@ class Menu:
                 if 0 < self.choice < 7:
                     return self.choice
                 else:
-                    print(" >Podaj poprawną liczbę.<")
+                    print(self.strings[0])
                     continue
             except ValueError:
-                print(" >Błędna wartość, podaj liczbę.<")
+                print(self.strings[1])
 
     def generatorclass_submenu(self):
         while True:
-            self.choice = str(input("Czy chcesz edytować domyślne wartości generatora? [y/n] >> "))
+            self.choice = str(input(self.strings[3]))
             if self.choice == 'y' or self.choice == 'n':
                 return self.choice
             else:
                 print("Błąd. ", end='')
                 continue
 
+    def genetatorclass_submenu_handler(self):
+        while True:
+            processes, begin, end = 0, 0, 0
+            try:
+                processes = int(input(self.strings[4]))
+                if processes < 3:
+                    print(self.strings[2])
+                    continue
+                else:
+                    break
+            except ValueError:
+                print(self.strings[1])
+
+        while True:
+            try:
+                begin = int(input(self.strings[5]))
+                if begin < 0:
+                    print(self.strings[2])
+                else:
+                    break
+            except ValueError:
+                print(self.strings[1])
+
+        while True:
+            try:
+                end = int(input(self.strings[6]))
+                if begin >= end:
+                    print(self.strings[2])
+                    continue
+                else:
+                    break
+            except ValueError:
+                print(self.strings[1])
+
+        return processes, begin, end

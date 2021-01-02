@@ -17,7 +17,8 @@ while True:
             generator.generate_processes()
             generator.show_process_list()
         elif subselect == 'y':
-            generator.generate_processes(11, 1, 5)
+            p, t1, t2 = menu.genetatorclass_submenu_handler()
+            generator.generate_processes(p, t1, t2)
             generator.show_process_list()
     elif select == 2:
         generator.load_all()
