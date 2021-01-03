@@ -18,10 +18,10 @@ class Menu:
     def display(self):
         for i in range(len(self.list)):
             if i == 0:
-                print('+' + '-' * 14 + "MENU" + '-' * 14 + '+')
+                print('\n+' + '-' * 14 + "MENU" + '-' * 14 + '+')
             print('| ' + self.list[i] + ' |')
         else:
-            print('+' + '-' * 32 + '+')
+            print('+' + '-' * 32 + '+\n')
 
     def select(self):
         while True:
