@@ -6,13 +6,15 @@ menu = TextMenu.Menu()
 generator = DataGenerator.Generator()
 
 
-# #generator.load_all()
-# generator.generate_processes(3,1,20)
-# generator.show_process_list()
-# print("Czas wykonywania symulacji:", simulator.fcfs_simulation())
-# # generator.show_process_list()
+# generator.load_all()
+# simulator = Simulator.Simulator(generator)
+# print("Czas wykonywania symulacji FCFS:", simulator.fcfs_simulation())
 # print("Średni czas oczekiwania:", simulator.calculate_average_time())
-
+# generator.show_process_list()
+# simulator = Simulator.Simulator(generator)
+# print("Czas wykonywania symulacji SJF:", simulator.sjf_simulation())
+# print("Średni czas oczekiwania:", simulator.calculate_average_time())
+# generator.show_process_list()
 
 while True:
     menu.display()
@@ -35,8 +37,9 @@ while True:
         print("Czas wykonywania symulacji FCFS:", simulator.fcfs_simulation())
         print("Średni czas oczekiwania:", simulator.calculate_average_time())
     elif select == 5:
-        # TODO symulacja SJF
-        print('SJF')
+        simulator = Simulator.Simulator(generator)
+        print("Czas wykonywania symulacji SJF:", simulator.sjf_simulation())
+        print("Średni czas oczekiwania:", simulator.calculate_average_time())
     elif select == 6:
         generator.show_process_list()
     elif select == 7:
