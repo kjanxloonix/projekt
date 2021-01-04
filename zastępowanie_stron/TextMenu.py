@@ -17,6 +17,8 @@ class Menu:
         self.strings.append("Podaj rozmiar nowej listy. >> ")
         self.strings.append("Podaj początek zakresu dla generatora. >> ")
         self.strings.append("Podaj koniec zakresu dla generatora. >> ")
+        self.strings.append("Czy chcesz edytować domyślną ilość ramek? [y/n] >> ")
+        self.strings.append("Podaj ilość ramek dla symulatora. >> ")
 
     def display(self):
         for i in range(len(self.list)):
@@ -79,6 +81,27 @@ class Menu:
                 print(self.strings[1])
 
         return size, begin, end
+
+    def simulatorclass_submenu(self):
+        while True:
+            self.choice = str(input(self.strings[7]))
+            if self.choice == 'y' or self.choice == 'n':
+                return self.choice
+            else:
+                print("Błąd. ", end='')
+                continue
+
+    def simulatorclass_submenu_handler(self):
+        while True:
+            try:
+                self.choice = int(input(self.strings[8]))
+                if self.choice < 3:
+                    print(self.strings[2])
+                else:
+                    break
+            except ValueError:
+                print(self.strings[1])
+        return self.choice
 
 
 
