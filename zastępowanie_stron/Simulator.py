@@ -10,11 +10,11 @@ class Simulator:
         not_swaps = 0
         free_frame = 0
 
+        print(" >Symulacja FIFO<")
         while True:
             if time == len(self.reference_list):
+                self.frames_list.clear()
                 return time, swaps, not_swaps
-
-            # print('>>'+str(time))
 
             if len(self.frames_list) != self.frames_size:
                 self.frames_list.append(time)
