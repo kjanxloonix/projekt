@@ -23,7 +23,7 @@ class Menu:
         self.infostrings_2.append("Czas trwania symulacji:")
         self.infostrings_2.append("\nLiczba podmian stron:")
         self.infostrings_2.append("\nIle razy odwołanie w ramce:")
-        self.infostrings_2.append("\nLiczniki operacji na ramkach:")
+        self.infostrings_2.append("\nLiczniki operacji w ramkach:")
 
     def display(self):
         for i in range(len(self.options)):
