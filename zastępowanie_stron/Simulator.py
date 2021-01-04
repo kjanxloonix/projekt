@@ -41,7 +41,6 @@ class Simulator:
             if time == len(self.reference_list):
                 self.frames_list.clear()
                 return time, swaps, not_swaps
-            print(">>>", time)
             if len(self.frames_list) != self.frames_size:
                 self.frames_list.append(time)
                 counters.append(0)
