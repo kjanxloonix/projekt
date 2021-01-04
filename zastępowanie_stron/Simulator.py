@@ -11,7 +11,7 @@ class Simulator:
         free_frame = 0
         counters = []
 
-        print(" >Symulacja FIFO<")
+        print("\n>Symulacja FIFO<")
         while True:
             if time == len(self.reference_list):
                 self.frames_list.clear()
@@ -32,8 +32,8 @@ class Simulator:
                     if self.reference_list[time] == self.frames_list[i]:
                         counters[i] += 1
                         not_swaps += 1
-
-            print(self.frames_list, counters)
+            # wyświetla w linii aktualne ramki oraz ich liczniki
+            # print(self.frames_list, counters, sep=' '*4)
             time += 1
 
     def lru_simulation(self):
@@ -42,7 +42,7 @@ class Simulator:
         not_swaps = 0
         counters = []
 
-        print(" >Symulacja LRU<")
+        print("\n>Symulacja LRU<")
         while True:
             if time == len(self.reference_list):
                 self.frames_list.clear()
@@ -61,6 +61,6 @@ class Simulator:
                     if self.reference_list[time] == self.frames_list[i]:
                         counters[i] += 1
                         not_swaps += 1
-
-            print(self.frames_list, counters)
+            # wyświetla w linii aktualne ramki oraz ich liczniki
+            # print(self.frames_list, counters, sep=' '*4)
             time += 1
