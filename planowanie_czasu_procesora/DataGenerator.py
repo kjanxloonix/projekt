@@ -2,7 +2,6 @@ import ProcessClass
 import pickle
 import random
 
-
 class Generator:
     def __init__(self):
         self.process_list = []

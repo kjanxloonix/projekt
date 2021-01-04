@@ -1,3 +1,5 @@
+import statistics
+
 class Simulator:
     def __init__(self, generator):
         self.worklist = []
@@ -67,5 +69,10 @@ class Simulator:
             if i == 0:
                 self.waiting_times.append(0)
                 continue
-            self.waiting_times.append(self.calculated_processes[i - 1].end_t - self.calculated_processes[i].arrive_t)
+            self.waiting_times.append(abs(self.calculated_processes[i-1].end_t - self.calculated_processes[i].arrive_t))
         return sum(self.waiting_times) / len(self.calculated_processes)
+
+    def calculate_standard_deviation(self):
+        if len(self.waiting_times) == 0:
+            return "Błąd!"
+        return round(statistics.stdev(self.waiting_times), 2)
