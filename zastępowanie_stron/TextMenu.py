@@ -12,8 +12,11 @@ class Menu:
         self.strings = []
         self.strings.append(" >Podaj poprawną wartość.<")
         self.strings.append(" >Błąd. Podaj liczbę.<")
-        self.strings.append("")
+        self.strings.append(" >Błędny zakres.<")
         self.strings.append("Czy chcesz edytować domyślne wartości generatora? [y/n] >> ")
+        self.strings.append("Podaj rozmiar nowej listy. >> ")
+        self.strings.append("Podaj początek zakresu dla generatora. >> ")
+        self.strings.append("Podaj koniec zakresu dla generatora. >> ")
 
     def display(self):
         for i in range(len(self.list)):
@@ -45,4 +48,37 @@ class Menu:
                 continue
 
     def generatorclass_submenu_handler(self):
-        pass
+        while True:
+            try:
+                size = int(input(self.strings[4]))
+                if size > 1:
+                    break
+                else:
+                    print(self.strings[2])
+            except ValueError:
+                print(self.strings[1])
+
+        while True:
+            try:
+                begin = int(input(self.strings[5]))
+                if begin < 0:
+                    print(self.strings[2])
+                else:
+                    break
+            except ValueError:
+                print(self.strings[1])
+
+        while True:
+            try:
+                end = int(input(self.strings[6]))
+                if begin >= end:
+                    print(self.strings[2])
+                else:
+                    break
+            except ValueError:
+                print(self.strings[1])
+
+        return size, begin, end
+
+
+
